@@ -21,6 +21,8 @@
               padding: 30px;
               box-sizing: border-box;
               font-family: sans-serif;
+              box-shadow: 0px 11px 18px black;
+              
                   
           }
           
@@ -40,14 +42,35 @@
               color: white;
               border-radius: 7px;
               font-size: 20px;
+              position: relative;
           }
           #canvas {
               background-color:bisque;
               height: 
           }
       </style>
+<!--
       <script src ="require.min.js" > </script>
       <script src ="main.js" > </script>
+-->
+      <script>
+          var canvas = document.getElementById('canvas');
+          var button = document.getElementsByClassName('makeNote');
+          
+          function addNote() {
+              alert("I will add a note");
+              
+          }
+          
+          function removeNote() {
+              
+          }
+
+          function deleteNote() {
+              
+          }
+      </script>
+      
       </head>
    <body>
 <header>Note Taker</header>
@@ -55,7 +78,7 @@
        <div id="notesGoHere">
            
 <!--        added button for Adding Notes   -->
-        <button class="makeNote" onclick="toDo()">Add Notes</button>
+        <button class="makeNote" onclick="addNote()">Add Notes</button>
            
        <form id="toDo">
            <ul>

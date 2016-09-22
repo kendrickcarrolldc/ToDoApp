@@ -3,7 +3,11 @@
   <head>
     <title> To Do List </title>
     <meta charset="utf-8">
-<!--    <link rel="stylesheet" href="css/style.css"/>-->
+      
+    <script src ="require.min.js" > </script>
+    <script src ="main.js"> </script>
+      
+<!--start of style sheet-->
       <style>
           body {
               background-image: url("images/paper.png");
@@ -52,10 +56,19 @@
           }
           
 */
+           #formParent {
+              
+              display: flex;
+              flex-direction: column;
+               align-items: center;
+               width: 100%;
+               
+          }
+          
           #form {
               display: flex;
               flex-direction: column;
-              align-items: center
+              align-content: center;
               width: 60%;
               position: relative;
               top: 25px;
@@ -66,6 +79,12 @@
               box-sizing:border-box;
               padding: 15px;
               
+              
+          }
+          label {
+              width: 100%;
+              
+              
           }
           .startNoteInput {
               
@@ -73,9 +92,9 @@
               top: 200px;
               height: 65px;
               box-sizing: border-box;
-              padding: 10px;
+              padding: 30px;
               font-size: 20px;
-              margin: 15px;
+              margin: 0px;
               overflow: visible;
               display:flex;
               flex-direction: column;
@@ -83,6 +102,7 @@
               
               
           }
+/*          Add button class*/
           .addNoteBtn {
               background-color: white;
               width: 150px;
@@ -95,17 +115,23 @@
              
               
           }
+/*          Save button class*/
+          .save {
+              width: 25%;
+              
+              bottom: 0px;
+              right: 0px;
+              margin: 15px;
+              border-radius: 7px;
+              
+                  
+          }
           #canvas {
               background-color:bisque;
               display: flex;
               flex-direction: column;
           }
-          div {
-              background-color: green;
-              height: 100px;
-              width: 100px;
-              
-          }
+        
       </style>
 <!--
       <script src ="require.min.js" > </script>
@@ -117,9 +143,10 @@
           
           
           function addNote() {
-              alert("I will add a note");
-              var div = document.createElement('div');
-              canvas.appendChild('div');
+//              alert("I will add a note");
+              var form = document.getElementById('form');
+              if (form )
+              
               
               
               
@@ -145,20 +172,20 @@
            
 <!--        added button for Adding Notes   -->
 <!--        <button class="addNote" onclick="addNote()">Add Notes</button>-->
-           
+ <div id="formParent">        
        <form id="form">
            <label>Title: <br/>
-               <input class="startNoteInput" placeholder="Enter title here..."> </input></label>
+               <input class="startNoteInput" placeholder="Enter title here..."> </input>
+           
+           
+           
+           </label>
        
             <label>Description:<br/>
                 <input class="startNoteInput" placeholder="Enter description here..."> </input></label>
            
-           
-<!--       <button class="addNoteBtn" onclick="addNote()">Add Notes</button>-->
-           <ul>
-               
-           </ul>
-           
+<button class="save" onclick="saveNote()">Save</button>
+ </div>          
        </form>
        <section id="canvas">
            </section>

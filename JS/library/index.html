@@ -1,19 +1,29 @@
 <!doctype html>
 <html>
-  <head>
+
+<head>
     <title> To Do List </title>
     <meta charset="utf-8">
-      
-    <script src ="require.min.js" > </script>
-    <script src ="main.js"> </script>
-      
-<!--start of style sheet-->
-      <style>
-          body {
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+
+
+<!--
+    <script src="require.min.js">
+    </script>
+    <script src="main.js">
+    </script>
+-->
+
+<!--CSS Stylesheets-->
+
+
+    <style>
+          body , input  {
               background-image: url("images/paper.png");
               background-repeat: repeat-x, repeat-;
-              
-              
+              font-family: 'Montserrat', sans-serif;
+
+
           }
           header {
               width: 100%;
@@ -24,7 +34,7 @@
               font-size: 80px;
               padding: 30px;
               box-sizing: border-box;
-              font-family: sans-serif;
+              font-family: 'Montserrat', sans-serif;
               box-shadow: 0px 11px 18px black;
 /*              position: fixed;*/
 /*
@@ -32,39 +42,50 @@
               left: 0px;
 */
               z-index: 5px;
-              
-                  
+
+
           }
           #addButton {
               position: fixed;
               bottom: 15px;
               right: 15px;
-              height:200px;
-              width: 200px;
+              /*height:200px;
+              width: 200px;*/
+              transition: 0.7s ease-in-out;
           }
-          
+
+          #addButton:hover {
+            transform: scale(1.1);
+            transition: 0.5s ease-in-out;
+
+
+
+
+          }
+
           #notesGoHere {
-              
+
           }
-          
+
 /*
           input {
               top: 80%;
               width: 100%;
               box-sizing: border-box;
-              
+
           }
-          
+
 */
            #formParent {
-              
+
               display: flex;
               flex-direction: column;
-               align-items: center;
-               width: 100%;
-               
+              align-items: center;
+              width: 100%;
+              display:none;
+
           }
-          
+
           #form {
               display: flex;
               flex-direction: column;
@@ -78,31 +99,34 @@
               background-color: grey;
               box-sizing:border-box;
               padding: 15px;
-              
-              
+
+
+
           }
           label {
               width: 100%;
-              
-              
+              font-family: 'Montserrat', sans-serif;
+
+
           }
-          .startNoteInput {
-              
+          input {
+
               width: 100%;
               top: 200px;
-              height: 65px;
+              min-height: 65px;
               box-sizing: border-box;
-              padding: 30px;
+              text-indent: 17px;
+              padding: 0px 0px 0px 0px;
               font-size: 20px;
               margin: 0px;
               overflow: visible;
               display:flex;
               flex-direction: column;
-              
-              
-              
+
+
+
           }
-/*          Add button class*/
+/*  Add button class*/
           .addNoteBtn {
               background-color: white;
               width: 150px;
@@ -110,89 +134,175 @@
               color: black;
               border-radius: 7px;
               font-size: 20px;
-              
+              cursor: pointer;
               box-shadow: 2px 5px 30px black;
-             
-              
+
+
           }
-/*          Save button class*/
-          .save {
+
+
+/*    Save button class*/
+          #save {
               width: 25%;
-              
+
               bottom: 0px;
               right: 0px;
               margin: 15px;
               border-radius: 7px;
-              
-                  
-          }
-          #canvas {
-              background-color:bisque;
-              display: flex;
-              flex-direction: column;
-          }
-        
-      </style>
-<!--
-      <script src ="require.min.js" > </script>
-      <script src ="main.js" > </script>
--->
-      <script>
-          var canvas = document.getElementById('canvas')[0];
-          var button = document.getElementsByClassName('makeNote');
-          
-          
-          function addNote() {
-//              alert("I will add a note");
-              var form = document.getElementById('form');
-              if (form )
-              
-              
-              
-              
-              
-          }
-          
-          function removeNote() {
-              
+
+
           }
 
-          function deleteNote() {
-              
+/*   Canvas to store notes */
+          #canvas {
+              width: 100%;
+              background-color:bisque;
+              display: flex;
+              flex-direction: row;
+              flex-wrap: wrap;
+              align-items: center;
+              box-sizing: border-box;
+              align-items: stretch;
+              padding:0px;
+
+              margin: 50px 0px 0px 0px;
+
           }
-          
-          
-      </script>
-      
+
+        .toDoItem {
+
+            width: 600px;
+            box-sizing: border-box;
+            border-top-left-radius:  30px;
+            padding: 6px 10px 20px 20px;
+            margin: 10px;
+            height: 200px;
+            background-color: saddlebrown;
+            overflow: hidden;
+            
+
+          }
+        .toDoItem:hover {
+          transform: rotateZ(3deg);
+          transition: 0.5s linear;
+          box-shadow: 2px 5px 15px black;
+        }
+
+
+        .removeButton {
+
+            top: 10px;
+            right: 10px;
+            width: 40px;
+            height: 40px;
+            float: right;
+        }
+
+        .editButton {
+
+
+            width: 40px;
+            height: 40px;
+            float: right;
+            margin-right: 5px;
+        }
+
+        .toDoItem h3  {
+            color:white;
+            font-size: 24px;
+
+        }
+
+        p {
+          color: white;
+        }
+        .message {
+
+            color: white;
+
+        }
+
+      </style>
+
+
       </head>
    <body>
 <header>Note Taker</header>
-    
+
 <!--       <div id="notesGoHere">-->
-           
+
 <!--        added button for Adding Notes   -->
 <!--        <button class="addNote" onclick="addNote()">Add Notes</button>-->
- <div id="formParent">        
-       <form id="form">
-           <label>Title: <br/>
-               <input class="startNoteInput" placeholder="Enter title here..."> </input>
-           
-           
-           
-           </label>
-       
-            <label>Description:<br/>
-                <input class="startNoteInput" placeholder="Enter description here..."> </input></label>
-           
-<button class="save" onclick="saveNote()">Save</button>
- </div>          
-       </form>
-       <section id="canvas">
-           </section>
+<div id="formParent">
+    <form id="form">
+        <label>Title:
+            <br/>
+            <input id="titleInput" placeholder="Enter title here..."> </input>
 
 
-<!--       </div>-->
-<img src= "images/addbutton.png" id="addButton" onclick="addNote()">
 
-    </body>
+        </label>
+
+        <label>Description:
+            <br/>
+            <input id="descriptInput" placeholder="Enter description here..."> </input>
+        </label>
+
+        <button id="save">Save</button>
+
+    </form>
+</div>
+
+<section id="canvas">
+    <!-- <div class="toDoItem">
+
+      <img src="images/xbutton.png" class="removeButton">
+      <img src="images/edit.png" class="editButton">
+        <h3>Drop car off at shop</h3>
+        <p class='message'>is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.<p>
+    </div> -->
+
+</section>
+
+
+<img src="images/addbutton.png" id="addButton" onclick="makeNote()">
+
+
+
+<!--Javascript-->
+
+
+<!--      <script src ="require.min.js" > </script>-->
+<!--      <script src ="main.js" > </script>-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src ="main.js" > </script>
+</body>
+
 </html>

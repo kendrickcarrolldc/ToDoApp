@@ -44,10 +44,10 @@ function inputValues(){
     img1.src = "images/edit.png";
     img2.src = "images/xbutton.png";
     var noteName = document.createElement('h3');
-    var noteDetails = document.createElement('p')
+    var noteDetails = document.createElement('p');
     noteDetails.className = "message";
 
-    body.appendChild(note);
+    body.appendChild(note).innerHTML = Date();
     note.appendChild(img2);
     note.appendChild(img1);
     note.appendChild(noteName);
@@ -58,6 +58,7 @@ function inputValues(){
 
 
     img2.addEventListener('click', deleteNote);
+    img1.addEventListener('click', editNote);
     //   // e.target.nodeName;
     //   note.remove();
     // })
@@ -66,12 +67,29 @@ function inputValues(){
     function deleteNote() {
       note.remove();
     }
+// Edit Note function
+    function editNote() {
+      if (formParent.style.display ='none' && ) {
+        formParent.style.display = 'block';
+        var editBtn = document.createElement('button');
+        editBtn.id = 'edit';
+        formParent.button.id = 'edit';
 
+
+
+      }
+
+
+
+
+    }
   }
+
+var formParent = document.getElementById('formParent');
 
   function makeNote() {
     console.log('its working');
-      var formParent = document.getElementById('formParent');
+
     //  var formChild = document.createElement('form');
     //    formChild.id = "form";
     //    formParent.id = "formParent";

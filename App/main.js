@@ -1,19 +1,63 @@
 ////bootstrap
-requirejs([ "modules/AddNote", "modules/inputValue", "modules/appearForm", "modules/init", "modules/hideForm","modules/store"], function( addNote,inputValues, appearForm,init ,hideForm,store ) {
-    //This function is called when scripts/helper/util.js is loaded.
-    //If util.js calls define(), then this function is not fired until
-    //util's dependencies have loaded, and the util argument will hold
-    //the module value for "helper/util".
-    //store.add(obj)
+requirejs(["modules/AddNote", "modules/appearForm", "modules/hideForm"],
+function( AddNote, appearForm , hideForm) {
 
-   
-    init();
-    inputValues();
-    var save = document.getElementById('save');
-    save.addEventListener('click', AddNote);
     var titleVal, descriptVal;
-    var currentNode= "";
+
+
+
+// Save functionality
+    var save = document.getElementById('save');
+      save.addEventListener('click',function(e) {
+      e.preventDefault();
+      if(save.textContent=="Save") {
+
+         console.log('hit2');
+         AddNote();
+         hideForm();
+
+      }
+      else if(save.textContent=="Edit") {
+
+        save.textContent="Save";
+        }
+      })
+
+    var addButton = document.getElementById('addButton');
+    addButton.addEventListener('click', appearForm);
+
     var body = document.getElementById('canvas'); // parent for notes
-    var formParent = document.getElementById('formParent');
-    alert('hit');
-});
+
+
+
+    (function init() {
+      body.addEventListener('click',actions)
+        function actions(e){
+          console.log(e.target)
+
+          if(e.target.className=="removeButton"){
+
+
+
+            e.target.parentNode.remove();
+            var toDoSet = document.getElementById('canvas').innerHTML;
+            localStorage.setItem('toDos', toDoSet);
+          }
+          else if(e.target.className=="editButton"){
+
+            formParent.style.display = 'block';
+            formParent.style.position = 'absolute';
+            var toDoSet = document.getElementById('canvas').innerHTML;
+            localStorage.setItem('toDos', toDoSet);
+            save.textContent="Edit";
+            currentNode = e.target.parentNode;
+            currentNode = e.target.parentNode.style.display = 'none';
+
+          }
+
+        }
+        var storedTodos =localStorage.getItem('toDos');
+        document.getElementById('canvas').innerHTML = storedTodos;
+    })();
+
+    });

@@ -1,5 +1,5 @@
-define("addNote", function () {
-  return function addNote(titleVal, descriptVal) {
+define(["modules/inputValue"], function (inputValues) {
+  return function AddNote(titleVal, descriptVal) {
   var note = document.createElement('div');
   note.className = "toDoItem";
   var img1 = document.createElement('img');
@@ -11,6 +11,9 @@ define("addNote", function () {
   var noteName = document.createElement('h3');
   var noteDetails = document.createElement('p');
   noteDetails.className = "message";
+  var body = document.getElementById('canvas');
+  titleVal = document.getElementById('titleInput').value; // put the value of the element within the function
+  descriptVal = document.getElementById('descriptInput').value;
 
   body.appendChild(note).innerHTML = Date();
   note.appendChild(img2);
@@ -19,12 +22,11 @@ define("addNote", function () {
   noteName.textContent = titleVal;
   note.appendChild(noteDetails);
   noteDetails.textContent = descriptVal;
-  var storeLocal = document.getElementById('container').innerHTML;
-  localStorage.setItem(counter+Date.now(), storeLocal);
+
+  var storedTodos = document.getElementById('canvas').innerHTML;
+    localStorage.setItem('toDos', storedTodos);
 
 }
 
 
-
-    }
-);
+    });

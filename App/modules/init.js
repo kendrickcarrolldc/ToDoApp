@@ -1,4 +1,5 @@
-define ("init", function() {
+define (function() {
+  var body= document.body;
   return function init() {
     body.addEventListener('click',actions)
       function actions(e){
@@ -18,6 +19,6 @@ define ("init", function() {
 
       }
       console.log("I am a test");
-      addNote()
+      AddNote()
   }
 })

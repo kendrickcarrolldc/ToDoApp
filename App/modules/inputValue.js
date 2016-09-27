@@ -1,4 +1,4 @@
-define(["hideForm","AddNote"], function (hideForm,addnote) {
+define(["modules/hideForm","modules/AddNote"], function (hideForm,addnote) {
 return function inputValues(){
 
   save.addEventListener('click',function(e){
@@ -31,4 +31,4 @@ return function inputValues(){
     // toDoStorage.write(list);
     })
   }
-}
+})

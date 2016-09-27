@@ -4,14 +4,14 @@ define ( function () {
       var jsonObj=JSON.stringify(obj)
       localStorage.setItem(key,jsonObj)
     }
-    function delete(){
+    function deleteNote(){
       //conection to the localStorage to delete
     }
     function getAll(){
       //conection to the localStorage to get all notes
       var notes=[]
       for( key in localStorage){
-        notes.push(JSON.parse( localStorage[key]);
+        notes.push(JSON.parse( localStorage[key]));
       }
       return notes
     }
@@ -22,7 +22,7 @@ define ( function () {
       add:add,
       edit:edit,
       getAll:getAll,
-      delete:delete
+      deleteNote:deleteNote
     }
 
-}
+})

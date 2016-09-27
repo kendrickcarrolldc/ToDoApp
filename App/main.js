@@ -1,5 +1,17 @@
 ////bootstrap
-//
+requirejs([ "AddNote", "inputValue", "appearForm", "init", "hideForm","store"], function(addNote,inputValues, appearForm,init ,hideForm,store ) {
+    //This function is called when scripts/helper/util.js is loaded.
+    //If util.js calls define(), then this function is not fired until
+    //util's dependencies have loaded, and the util argument will hold
+    //the module value for "helper/util".
+    //store.add(obj)
+
+    init();
+    inputValues();
+    var save = document.getElementById('save');
+    save.addEventListener('click',addNote)
+});
+
 // require(['modules/person'], function(person){
 //    console.log(person.firstName + " " + person.lastName);
 // });
@@ -9,19 +21,15 @@
 // });
 //
 // require(['modules/AddNote'], function AddNote{
-//    
+//
 // });
 
 
-document.addEventListener('DOMContentLoaded',function(){
 
-    init();
-    inputValues();
-});
+
 
 var titleVal, descriptVal;
 var currentNode= "";
-var save = document.querySelector("#save");
 var body = document.getElementById('canvas'); // parent for notes
 var formParent = document.getElementById('formParent');
 
@@ -150,32 +158,7 @@ function inputValues(){
   }
 
 
-function createRow(key) {
 
-      var note = document.createElement('div');
-      note.className = "toDoItem";
-      var img1 = document.createElement('img');
-      var img2 = document.createElement('img');
-      img2.className = "removeButton";
-      img1.className = "editButton";
-      img1.src = "images/edit.png";
-      img2.src = "images/xbutton.png";
-      var noteName = document.createElement('h3');
-      var noteDetails = document.createElement('p');
-      noteDetails.className = "message";
-
-      body.appendChild(note).innerHTML = Date();
-      note.appendChild(img2);
-      note.appendChild(img1);
-      note.appendChild(noteName);
-      noteName.textContent = titleVal;
-      note.appendChild(noteDetails);
-      noteDetails.textContent = descriptVal;
-
-
-  document.getElementById("form").reset();
-
-}
 
   function makeNote() {
     console.log('its working');

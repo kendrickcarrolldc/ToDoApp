@@ -1,8 +1,5 @@
-define(function addNote(){
-
-
-
-(function addNote(titleVal, descriptVal){
+define("addNote", function () {
+  return function addNote(titleVal, descriptVal) {
   var note = document.createElement('div');
   note.className = "toDoItem";
   var img1 = document.createElement('img');
@@ -23,12 +20,11 @@ define(function addNote(){
   note.appendChild(noteDetails);
   noteDetails.textContent = descriptVal;
   var storeLocal = document.getElementById('container').innerHTML;
-  localStorage.setItem('storedValues', storeLocal);
+  localStorage.setItem(counter+Date.now(), storeLocal);
 
 }
 
 
 
-
-
+    }
 });

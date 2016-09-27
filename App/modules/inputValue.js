@@ -1,4 +1,5 @@
-define(function inputValues(){
+define(["hideForm","AddNote"], function (hideForm,secondArg) {
+return function inputValues(){
 
   save.addEventListener('click',function(e){
     e.preventDefault();
@@ -28,5 +29,6 @@ define(function inputValues(){
     // //
     // // toDoStorage.write(list);
     // toDoStorage.write(list);
-  })
+    })
+  }
 }

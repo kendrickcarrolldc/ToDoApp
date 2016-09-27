@@ -1,4 +1,4 @@
-define(["hideForm","AddNote"], function (hideForm,secondArg) {
+define(["hideForm","AddNote"], function (hideForm,addnote) {
 return function inputValues(){
 
   save.addEventListener('click',function(e){

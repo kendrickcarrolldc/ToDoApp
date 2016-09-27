@@ -1,4 +1,4 @@
-define ("appearForm", function () {
+define (function () {
   return function appearForm() {
     var addButton = document.getElementById('addButton');
   console.log('its working');
@@ -7,3 +7,4 @@ define ("appearForm", function () {
           formParent.style.display = 'block';
     }
 }
+})

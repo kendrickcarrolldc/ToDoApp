@@ -6,3 +6,4 @@ define ("appearForm", function () {
           formParent.style.display = 'block';
     }
 }
+})

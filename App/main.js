@@ -2,24 +2,26 @@
 requirejs(["modules/AddNote", "modules/appearForm", "modules/hideForm"],
 function( AddNote, appearForm , hideForm) {
 
-    var titleVal, descriptVal;
-
+   
 
 
 // Save functionality
     var save = document.getElementById('save');
       save.addEventListener('click',function(e) {
       e.preventDefault();
+				
+				  titleVal = document.getElementById('titleInput').value; // put the value of the element within the function
+  descriptVal = document.getElementById('descriptInput').value;
       if(save.textContent=="Save") {
 
-         console.log('hit2');
-         AddNote();
+        
+         AddNote(null, titleVal, descriptVal);
          hideForm();
 
       }
       else if(save.textContent=="Edit") {
-
-        save.textContent="Save";
+         AddNote(currentNode, titleVal, descriptVal);
+         hideForm();
         }
       })
 
@@ -51,8 +53,7 @@ function( AddNote, appearForm , hideForm) {
             localStorage.setItem('toDos', toDoSet);
             save.textContent="Edit";
             currentNode = e.target.parentNode;
-            currentNode = e.target.parentNode.style.display = 'none';
-
+            
           }
 
         }

@@ -1,8 +1,11 @@
 define(function () {
 	return function AddNote(element, titleVal, descriptVal) {
 		var note = document.createElement('div');
+
 		if (element)
 			note = element;
+
+
 		note.className = "toDoItem";
 		var img1 = document.createElement('img');
 		var img2 = document.createElement('img');
@@ -14,6 +17,7 @@ define(function () {
 		var noteDetails = document.createElement('p');
 		noteDetails.className = "message";
 		var body = document.getElementById('canvas');
+	
 
 
 		if (!element)
@@ -22,9 +26,9 @@ define(function () {
 		note.appendChild(img2);
 		note.appendChild(img1);
 		note.appendChild(noteName);
-		noteName.textContent = titleVal;
+		noteName.textContent = titleVal.value;
 		note.appendChild(noteDetails);
-		noteDetails.textContent = descriptVal;
+		noteDetails.textContent = descriptVal.value;
 
 		var storedTodos = document.getElementById('canvas').innerHTML;
 		localStorage.setItem('toDos', storedTodos);

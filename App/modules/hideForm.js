@@ -3,6 +3,7 @@ define ( function () {
 
       if (formParent.style.display = 'block') {
           formParent.style.display = 'none';
+
       }
     }
 });

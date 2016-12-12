@@ -29,6 +29,8 @@ define(function () {
 		noteName.textContent = titleVal.value;
 		note.appendChild(noteDetails);
 		noteDetails.textContent = descriptVal.value;
+		titleVal.value = "";
+		descriptVal.value = "";
 
 		var storedTodos = document.getElementById('canvas').innerHTML;
 		localStorage.setItem('toDos', storedTodos);
